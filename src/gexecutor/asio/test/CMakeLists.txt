@@ -1,5 +1,4 @@
 cmake_minimum_required (VERSION 2.6)
-set (CMAKE_CXX_COMPILER  g++)
 set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -std=c++11 -Wall -Werror")
 find_package(Boost 1.54 REQUIRED COMPONENTS system filesystem)
 
@@ -28,7 +27,7 @@ target_link_libraries(${GEXECUTOR_UNITTEST_MODULE_NAME}
 # Integrating the cmake with the unit test program such that make test
 # would run the above test case
 add_test (${GEXECUTOR_UNITTEST_MODULE_NAME}_SMOKE
-        ${CMAKE_BINARY_DIR}/bin/${GEXECUTOR_UNITTEST_MODULE_NAME}
+        ${EXECUTABLE_OUTPUT_PATH}/${GEXECUTOR_UNITTEST_MODULE_NAME}
         --gtest_filter=*Smoke*
         --logtostderr=0
         --gtest_output=xml:${GEXECUTOR_UNITTEST_MODULE_NAME}_SMOKE.xml)
